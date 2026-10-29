@@ -363,6 +363,97 @@
     .empty-row { text-align: center; color: var(--text-muted); padding: 28px !important; }
     .empty-row.error { color: var(--danger); }
 
+
+    /* ---------- Premium layer ---------- */
+    body { font-variant-numeric: tabular-nums; }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background-image: radial-gradient(rgba(91, 99, 245, 0.18) 1px, transparent 1.3px);
+      background-size: 22px 22px;
+      -webkit-mask-image: radial-gradient(ellipse 75% 45% at 50% 0%, #000, transparent 75%);
+      mask-image: radial-gradient(ellipse 75% 45% at 50% 0%, #000, transparent 75%);
+    }
+    .card, .stat { box-shadow: 0 1px 2px rgba(20, 26, 42, 0.04), 0 2px 6px rgba(20, 26, 42, 0.03), 0 22px 44px -28px rgba(50, 60, 130, 0.22); }
+    .brand h1 { font-size: 1.7rem; letter-spacing: -0.03em; }
+
+    /* Stats */
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+    @media (max-width: 800px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+    .stat {
+      display: flex; align-items: center; gap: 14px;
+      padding: 18px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .stat-icon { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; color: var(--accent); background: var(--accent-soft); }
+    .stat-icon svg { width: 20px; height: 20px; }
+    .stat-icon.green { color: var(--success); background: var(--success-soft); }
+    .stat-icon.amber { color: #d97706; background: var(--warn-soft); }
+    .stat-icon.sky { color: #0284c7; background: rgba(2, 132, 199, 0.1); }
+    .stat-label { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); }
+    .stat-value { font-size: 1.55rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; }
+
+    /* Form completeness */
+    .progress { margin-bottom: 26px; }
+    .progress-head { display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; }
+    .progress-head strong { color: var(--accent); }
+    .progress-bar { height: 6px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+    .progress-bar span { display: block; height: 100%; width: 0; border-radius: inherit; background: linear-gradient(90deg, #7c83ff, #5058ec); transition: width 0.4s var(--ease); }
+
+    /* Inputs with leading icons */
+    .field { position: relative; }
+    .field input[type] { padding-left: 40px; }
+    .field-icon, .field .prefix {
+      position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
+      width: 17px; height: 17px; color: #a3abc0; pointer-events: none;
+      transition: color 0.2s var(--ease);
+    }
+    .field .prefix { width: auto; height: auto; font-size: 0.95rem; font-weight: 700; line-height: 1; }
+    .field:focus-within .field-icon, .field:focus-within .prefix { color: var(--accent); }
+    .field input[type="number"]::-webkit-inner-spin-button { opacity: 0.4; }
+    input:focus-visible { outline: none; }
+
+    /* Buttons */
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 14px 28px -12px rgba(91, 99, 245, 0.95), inset 0 1px 0 rgba(255,255,255,0.28); }
+    .btn-secondary:hover { transform: translateY(-1px); box-shadow: 0 6px 14px -8px rgba(40, 50, 100, 0.3); }
+    .btn-primary:active, .btn-secondary:active { transform: translateY(0); }
+
+    /* Code window */
+    .code-window { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #fbfcff; }
+    .code-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 9px 12px 9px 16px;
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+    }
+    .code-file { display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', Consolas, monospace; font-size: 0.78rem; font-weight: 500; color: var(--text-dim); }
+    .copy-btn {
+      font-family: inherit; font-size: 0.78rem; font-weight: 600; color: var(--text-dim);
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 11px; border-radius: 8px; cursor: pointer;
+      background: #fff; border: 1px solid var(--border);
+      transition: all 0.2s var(--ease);
+    }
+    .copy-btn:hover { color: var(--accent); border-color: rgba(91, 99, 245, 0.4); }
+    .copy-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    pre.json-code { background: transparent; border: none; border-radius: 0; color: var(--text-dim); max-height: 500px; }
+    .j-key { color: #4338ca; }
+    .j-str { color: #047857; }
+    .j-num { color: #b45309; }
+    .j-bool { color: #be185d; font-weight: 500; }
+
+    /* Table extras */
+    .prod { display: flex; align-items: center; gap: 12px; min-width: 190px; }
+    .prod-avatar {
+      width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center;
+      font-weight: 800; font-size: 0.9rem; color: var(--accent);
+      background: linear-gradient(145deg, rgba(124,131,255,0.18), rgba(91,99,245,0.08));
+      border: 1px solid rgba(91, 99, 245, 0.18);
+    }
+    .cell-sub { font-size: 0.74rem; color: var(--text-muted); font-family: 'JetBrains Mono', Consolas, monospace; }
+    .tag-low { color: var(--danger); background: var(--danger-soft); border-color: rgba(220, 38, 38, 0.25); }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
     }
@@ -390,12 +481,24 @@
       </div>
     </header>
 
+    <!-- Stats -->
+    <section class="stats" aria-label="Product summary">
+      <div class="stat"><span class="stat-icon"><i data-lucide="package"></i></span><div><div class="stat-label">Total products</div><div class="stat-value" id="statTotal">0</div></div></div>
+      <div class="stat"><span class="stat-icon green"><i data-lucide="circle-check"></i></span><div><div class="stat-label">Active</div><div class="stat-value" id="statActive">0</div></div></div>
+      <div class="stat"><span class="stat-icon amber"><i data-lucide="star"></i></span><div><div class="stat-label">Featured</div><div class="stat-value" id="statFeatured">0</div></div></div>
+      <div class="stat"><span class="stat-icon sky"><i data-lucide="boxes"></i></span><div><div class="stat-label">Units in stock</div><div class="stat-value" id="statStock">0</div></div></div>
+    </section>
+
     <!-- Notification -->
     <div id="alertBox" class="alert" role="status" aria-live="polite"></div>
 
     <div class="workspace-grid">
       <!-- Left: Form -->
       <div class="card">
+        <div class="progress" aria-hidden="true">
+          <div class="progress-head"><span>Form completeness</span><strong id="progressPct">0%</strong></div>
+          <div class="progress-bar"><span id="progressFill"></span></div>
+        </div>
         <form id="productForm">
 
           <div class="section-title">
@@ -404,18 +507,18 @@
 
           <div class="form-group">
             <label for="name">Product name <span class="required">*</span></label>
-            <input type="text" id="name" required placeholder="e.g. Wireless Bluetooth Headphones">
+            <div class="field"><i data-lucide="type" class="field-icon"></i><input type="text" id="name" required placeholder="e.g. Wireless Bluetooth Headphones"></div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label for="slug">Slug (URL friendly)</label>
-              <input type="text" id="slug" placeholder="wireless-bluetooth-headphones">
+              <div class="field"><i data-lucide="link-2" class="field-icon"></i><input type="text" id="slug" placeholder="wireless-bluetooth-headphones"></div>
               <div class="input-hint">Leave blank to auto-generate from name</div>
             </div>
             <div class="form-group">
               <label for="brand">Brand</label>
-              <input type="text" id="brand" placeholder="e.g. SoundMax">
+              <div class="field"><i data-lucide="badge-check" class="field-icon"></i><input type="text" id="brand" placeholder="e.g. SoundMax"></div>
             </div>
           </div>
 
@@ -431,33 +534,33 @@
           <div class="form-row">
             <div class="form-group">
               <label for="price">Regular price (BDT) <span class="required">*</span></label>
-              <input type="number" id="price" required min="0" step="any" placeholder="2500">
+              <div class="field"><span class="prefix">৳</span><input type="number" id="price" required min="0" step="any" placeholder="2500"></div>
             </div>
             <div class="form-group">
               <label for="discountPrice">Discount price (BDT)</label>
-              <input type="number" id="discountPrice" min="0" step="any" placeholder="1999">
+              <div class="field"><span class="prefix">৳</span><input type="number" id="discountPrice" min="0" step="any" placeholder="1999"></div>
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label for="category">Category</label>
-              <input type="text" id="category" placeholder="e.g. Electronics, Audio">
+              <div class="field"><i data-lucide="layers" class="field-icon"></i><input type="text" id="category" placeholder="e.g. Electronics, Audio"></div>
             </div>
             <div class="form-group">
               <label for="sku">SKU code</label>
-              <input type="text" id="sku" placeholder="e.g. SM-HEAD-001">
+              <div class="field"><i data-lucide="barcode" class="field-icon"></i><input type="text" id="sku" placeholder="e.g. SM-HEAD-001"></div>
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label for="stock">Stock quantity</label>
-              <input type="number" id="stock" min="0" value="50" placeholder="50">
+              <div class="field"><i data-lucide="boxes" class="field-icon"></i><input type="number" id="stock" min="0" value="50" placeholder="50"></div>
             </div>
             <div class="form-group">
               <label for="images">Image URLs (comma separated)</label>
-              <input type="text" id="images" placeholder="https://example.com/images/headphones.jpg">
+              <div class="field"><i data-lucide="image" class="field-icon"></i><input type="text" id="images" placeholder="https://example.com/images/headphones.jpg"></div>
             </div>
           </div>
 
@@ -468,22 +571,22 @@
           <div class="form-row">
             <div class="form-group">
               <label for="color">Color</label>
-              <input type="text" id="color" placeholder="e.g. Black, Silver">
+              <div class="field"><i data-lucide="palette" class="field-icon"></i><input type="text" id="color" placeholder="e.g. Black, Silver"></div>
             </div>
             <div class="form-group">
               <label for="connectivity">Connectivity</label>
-              <input type="text" id="connectivity" placeholder="e.g. Bluetooth 5.3, USB-C">
+              <div class="field"><i data-lucide="bluetooth" class="field-icon"></i><input type="text" id="connectivity" placeholder="e.g. Bluetooth 5.3, USB-C"></div>
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label for="batteryLife">Battery life</label>
-              <input type="text" id="batteryLife" placeholder="e.g. 30 hours">
+              <div class="field"><i data-lucide="battery-full" class="field-icon"></i><input type="text" id="batteryLife" placeholder="e.g. 30 hours"></div>
             </div>
             <div class="form-group">
               <label for="warranty">Warranty</label>
-              <input type="text" id="warranty" placeholder="e.g. 1 year">
+              <div class="field"><i data-lucide="shield-check" class="field-icon"></i><input type="text" id="warranty" placeholder="e.g. 1 year"></div>
             </div>
           </div>
 
@@ -494,11 +597,11 @@
           <div class="form-row">
             <div class="form-group">
               <label for="avgRating">Average rating (0 to 5)</label>
-              <input type="number" id="avgRating" min="0" max="5" step="0.1" value="4.5">
+              <div class="field"><i data-lucide="star" class="field-icon"></i><input type="number" id="avgRating" min="0" max="5" step="0.1" value="4.5"></div>
             </div>
             <div class="form-group">
               <label for="ratingCount">Total reviews</label>
-              <input type="number" id="ratingCount" min="0" value="120">
+              <div class="field"><i data-lucide="message-square" class="field-icon"></i><input type="number" id="ratingCount" min="0" value="120"></div>
             </div>
           </div>
 
@@ -539,7 +642,13 @@
         <p class="preview-note">
           This JSON object will be saved to <code>data/product.json</code> when you save.
         </p>
-        <pre class="json-code" id="jsonPreview"></pre>
+        <div class="code-window">
+          <div class="code-bar">
+            <span class="code-file"><i data-lucide="braces" class="ic-sm"></i> product.json</span>
+            <button type="button" class="copy-btn" id="copyBtn"><i data-lucide="copy" class="ic-sm"></i> Copy</button>
+          </div>
+          <pre class="json-code" id="jsonPreview"></pre>
+        </div>
       </div>
     </div>
 
@@ -609,9 +718,40 @@
     const refreshListBtn = document.getElementById('refreshListBtn');
     const productTableBody = document.getElementById('productTableBody');
     const totalCountBadge = document.getElementById('totalCountBadge');
+    const copyBtn = document.getElementById('copyBtn');
+    const progressFill = document.getElementById('progressFill');
+    const progressPct = document.getElementById('progressPct');
+    const statTotal = document.getElementById('statTotal');
+    const statActive = document.getElementById('statActive');
+    const statFeatured = document.getElementById('statFeatured');
+    const statStock = document.getElementById('statStock');
 
     let nextEstimatedId = 1;
     let alertTimer;
+
+    // Fields counted in the completeness bar
+    const trackedInputs = [nameInput, slugInput, descInput, priceInput, discountPriceInput, categoryInput,
+      brandInput, skuInput, imagesInput, colorInput, connectivityInput, batteryLifeInput, warrantyInput];
+
+    function updateProgress() {
+      const filled = trackedInputs.filter(i => i.value.trim() !== '').length;
+      const pct = Math.round((filled / trackedInputs.length) * 100);
+      progressFill.style.width = pct + '%';
+      progressPct.textContent = pct + '%';
+    }
+
+    // Syntax-highlight JSON for the preview
+    function highlightJson(json) {
+      const esc = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      return esc.replace(
+        /("(?:\\.|[^"\\])*")(\s*:)?|\b(true|false|null)\b|(-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)/g,
+        (m, str, colon, bool, num) => {
+          if (str !== undefined) return colon ? `<span class="j-key">${str}</span>${colon}` : `<span class="j-str">${str}</span>`;
+          if (bool) return `<span class="j-bool">${bool}</span>`;
+          return `<span class="j-num">${num}</span>`;
+        }
+      );
+    }
 
     function slugify(text) {
       return text.toString().toLowerCase().trim()
@@ -671,8 +811,24 @@
     }
 
     function updatePreview() {
-      jsonPreview.textContent = JSON.stringify(getFormDataObject(), null, 2);
+      jsonPreview.innerHTML = highlightJson(JSON.stringify(getFormDataObject(), null, 2));
+      updateProgress();
     }
+
+    copyBtn.addEventListener('click', async () => {
+      let label = '<i data-lucide="check" class="ic-sm"></i> Copied';
+      try {
+        await navigator.clipboard.writeText(JSON.stringify(getFormDataObject(), null, 2));
+      } catch (err) {
+        label = '<i data-lucide="x" class="ic-sm"></i> Copy failed';
+      }
+      copyBtn.innerHTML = label;
+      renderIcons();
+      setTimeout(() => {
+        copyBtn.innerHTML = '<i data-lucide="copy" class="ic-sm"></i> Copy';
+        renderIcons();
+      }, 1800);
+    });
 
     fillSampleBtn.addEventListener('click', () => {
       nameInput.value = 'Noise Cancelling Studio Headphones';
@@ -726,6 +882,10 @@
         const json = await res.json();
         if (json.success && Array.isArray(json.data)) {
           totalCountBadge.textContent = json.data.length;
+          statTotal.textContent = json.data.length;
+          statActive.textContent = json.data.filter(p => p.isActive).length;
+          statFeatured.textContent = json.data.filter(p => p.isFeatured).length;
+          statStock.textContent = json.data.reduce((sum, p) => sum + (Number(p.stock) || 0), 0).toLocaleString();
           const maxId = json.data.reduce((max, p) => Math.max(max, Number(p.id) || 0), 0);
           nextEstimatedId = maxId + 1;
           updatePreview();
@@ -746,11 +906,19 @@
             return `
             <tr>
               <td><strong>#${p.id}</strong></td>
-              <td class="cell-name">${escapeHtml(p.name)}</td>
+              <td>
+                <div class="prod">
+                  <span class="prod-avatar">${escapeHtml((p.name || '?').trim().charAt(0).toUpperCase())}</span>
+                  <div>
+                    <div class="cell-name">${escapeHtml(p.name)}</div>
+                    <div class="cell-sub">${escapeHtml(p.slug || '')}</div>
+                  </div>
+                </div>
+              </td>
               <td><span class="tag">${escapeHtml(p.category || '-')}</span></td>
               <td>${escapeHtml(p.brand || '-')}</td>
               <td>${priceHtml}</td>
-              <td>${p.stock}</td>
+              <td>${Number(p.stock) <= 10 ? `<span class="tag tag-low">${p.stock} left</span>` : p.stock}</td>
               <td>
                 <span class="rating">
                   <i data-lucide="star"></i>
