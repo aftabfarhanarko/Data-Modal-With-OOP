@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Product | JSON Database Form</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Lucide icons (same icon set as lucide-react) -->
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --surface: #ffffff;
+      --surface-2: #f1f3f9;
+      --border: #e3e7f0;
+      --border-soft: #eceff6;
+      --text: #141a2a;
+      --text-dim: #4a5470;
+      --text-muted: #8089a3;
+      --accent: #5b63f5;
+      --accent-strong: #4b52e0;
+      --accent-soft: rgba(91, 99, 245, 0.09);
+      --success: #059669;
+      --success-soft: rgba(5, 150, 105, 0.10);
+      --warn: #b45309;
+      --warn-soft: rgba(245, 158, 11, 0.14);
+      --danger: #dc2626;
+      --danger-soft: rgba(220, 38, 38, 0.08);
+      --input-bg: #ffffff;
+      --radius: 14px;
+      --radius-sm: 9px;
+      --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      background:
+        radial-gradient(900px 420px at 12% -8%, rgba(91, 99, 245, 0.10), transparent 60%),
+        radial-gradient(700px 380px at 100% 0%, rgba(124, 131, 255, 0.06), transparent 60%),
+        var(--bg);
+      background-attachment: fixed;
+      color: var(--text);
+      line-height: 1.55;
+      padding: 32px 20px 56px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: 0.85em; color: var(--text-dim); }
+
+    /* Icons */
+    svg.lucide { stroke-width: 1.75; flex-shrink: 0; }
+    .ic { width: 18px; height: 18px; }
+    .ic-sm { width: 15px; height: 15px; }
+    .spin { animation: spin 0.9s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding-bottom: 24px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .brand { display: flex; align-items: center; gap: 16px; }
+
+    .brand-mark {
+      width: 50px; height: 50px;
+      border-radius: 14px;
+      display: grid; place-items: center;
+      color: #fff;
+      background: linear-gradient(145deg, #7c83ff, #4b52e0);
+      box-shadow: 0 10px 24px -10px rgba(91, 99, 245, 0.55), inset 0 1px 0 rgba(255,255,255,0.25);
+    }
+    .brand-mark svg { width: 24px; height: 24px; }
+
+    .brand h1 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    }
+    .brand p { color: var(--text-muted); font-size: 0.875rem; margin-top: 2px; }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.72rem; font-weight: 600;
+      color: var(--success);
+      background: var(--success-soft);
+      border: 1px solid rgba(5, 150, 105, 0.25);
+      padding: 3px 10px 3px 8px;
+      border-radius: 999px;
+    }
+    .badge::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.5);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      70% { box-shadow: 0 0 0 7px rgba(5, 150, 105, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0); }
+    }
+
+    .quick-actions { display: flex; gap: 10px; }
+
+    /* Buttons */
+    .btn {
+      font-family: inherit;
+      padding: 10px 16px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      transition: background 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.15s var(--ease), box-shadow 0.2s var(--ease);
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    .btn-secondary {
+      background: var(--surface-2);
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn-secondary:hover { background: #e8ebf5; border-color: #d3d9e8; }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(180deg, #6d74fb, #5058ec);
+      box-shadow: 0 8px 22px -10px rgba(91, 99, 245, 0.9), inset 0 1px 0 rgba(255,255,255,0.22);
+    }
+    .btn-primary:hover { background: linear-gradient(180deg, #7c83ff, #5b63f5); }
+    .btn-primary:disabled { opacity: 0.65; cursor: not-allowed; }
+
+    /* Layout */
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: start;
+    }
+    @media (max-width: 992px) { .workspace-grid { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 1px 2px rgba(20, 26, 42, 0.04), 0 18px 40px -24px rgba(40, 50, 100, 0.18);
+    }
+
+    /* Section titles */
+    .section-title {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin: 0 0 18px;
+    }
+    .section-title:not(:first-child) {
+      margin-top: 34px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border-soft);
+    }
+    .section-icon {
+      width: 32px; height: 32px;
+      border-radius: 9px;
+      display: grid; place-items: center;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(91, 99, 245, 0.18);
+    }
+    .section-icon svg { width: 17px; height: 17px; }
+
+    /* Form */
+    .form-group { margin-bottom: 18px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+    label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      margin-bottom: 7px;
+    }
+    .required { color: var(--danger); }
+
+    input[type="text"], input[type="number"], input[type="url"], textarea, select {
+      width: 100%;
+      font-family: inherit;
+      background: var(--input-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 11px 13px;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease), background 0.2s var(--ease);
+    }
+    input::placeholder, textarea::placeholder { color: #a3abc0; }
+    input:hover, textarea:hover { border-color: #cdd4e4; }
+    input:focus, textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(91, 99, 245, 0.16);
+      background: #fff;
+    }
+    textarea { resize: vertical; min-height: 92px; }
+
+    .input-hint { font-size: 0.75rem; color: var(--text-muted); margin-top: 5px; }
+
+    /* Status toggles */
+    .checkbox-group { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .toggle-label {
+      position: relative;
+      display: inline-flex; align-items: center; gap: 10px;
+      margin: 0;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--input-bg);
+      color: var(--text-dim);
+      font-size: 0.86rem;
+      cursor: pointer;
+      transition: border-color 0.2s var(--ease), background 0.2s var(--ease), color 0.2s var(--ease);
+    }
+    .toggle-label input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+    .toggle-label .check {
+      width: 18px; height: 18px; border-radius: 5px;
+      border: 1.5px solid #c3cadb;
+      display: grid; place-items: center;
+      color: transparent;
+      transition: all 0.2s var(--ease);
+    }
+    .toggle-label .check svg { width: 12px; height: 12px; stroke-width: 3; }
+    .toggle-label:has(input:checked) {
+      border-color: rgba(91, 99, 245, 0.45);
+      background: var(--accent-soft);
+      color: var(--text);
+    }
+    .toggle-label:has(input:checked) .check {
+      background: var(--accent-strong);
+      border-color: var(--accent-strong);
+      color: #fff;
+    }
+    .toggle-label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    .form-actions { margin-top: 30px; display: flex; gap: 12px; }
+    .form-actions .btn-primary { flex: 2; padding: 13px 18px; font-size: 0.92rem; }
+    .form-actions .btn-secondary { flex: 1; }
+
+    /* Alert */
+    .alert {
+      display: none;
+      align-items: center; gap: 12px;
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 22px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      animation: slideIn 0.3s var(--ease);
+    }
+    .alert.show { display: flex; }
+    .alert-success { background: var(--success-soft); border: 1px solid rgba(5, 150, 105, 0.3); color: #047857; }
+    .alert-danger { background: var(--danger-soft); border: 1px solid rgba(220, 38, 38, 0.3); color: #b91c1c; }
+    @keyframes slideIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
+    /* JSON preview */
+    .preview-card { position: sticky; top: 24px; }
+    @media (max-width: 992px) { .preview-card { position: static; } }
+
+    .preview-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 6px; }
+    .preview-header .section-title { margin: 0 !important; padding: 0 !important; border: none !important; }
+    .sync-hint { display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--text-muted); }
+    .preview-note { font-size: 0.82rem; color: var(--text-muted); margin: 8px 0 14px; }
+
+    pre.json-code {
+      background: #f6f8fd;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 18px;
+      color: #3340c9;
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      font-size: 0.78rem;
+      line-height: 1.65;
+      max-height: 540px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-break: break-all;
+      scrollbar-width: thin;
+      scrollbar-color: #c3cadb transparent;
+    }
+
+    /* Table */
+    .history-section { margin-top: 28px; }
+    .history-section .section-title code { margin-left: 2px; }
+
+    .count-pill {
+      font-size: 0.75rem; font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 2px 10px;
+      border-radius: 999px;
+    }
+
+    .table-container {
+      overflow-x: auto;
+      border-radius: 11px;
+      border: 1px solid var(--border-soft);
+    }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.86rem; }
+    th {
+      background: var(--surface-2);
+      color: var(--text-muted);
+      padding: 13px 18px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    td { padding: 14px 18px; border-bottom: 1px solid var(--border-soft); color: var(--text-dim); vertical-align: middle; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr { transition: background 0.15s; }
+    tbody tr:hover { background: rgba(91, 99, 245, 0.04); }
+    td strong { color: var(--text); font-weight: 700; }
+    .cell-name { color: var(--text); font-weight: 600; }
+
+    .tag {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--text-dim);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+    }
+    .tag-active { color: var(--success); background: var(--success-soft); border-color: rgba(5, 150, 105, 0.25); }
+    .tag-featured { color: var(--warn); background: var(--warn-soft); border-color: rgba(245, 158, 11, 0.3); }
+
+    .price-old { color: var(--text-muted); text-decoration: line-through; font-size: 0.76rem; margin-left: 6px; }
+    .rating { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+    .rating svg { width: 14px; height: 14px; color: #f59e0b; fill: #f59e0b; }
+    .rating small { color: var(--text-muted); }
+    .status-cell { display: flex; gap: 6px; flex-wrap: wrap; }
+
+    .empty-row { text-align: center; color: var(--text-muted); padding: 28px !important; }
+    .empty-row.error { color: var(--danger); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <div class="brand-mark"><i data-lucide="package"></i></div>
+        <div>
+          <h1>Product Form &amp; JSON Storage <span class="badge">Live sync</span></h1>
+          <p>Fill out the fields to add a new product directly into <code>data/product.json</code>.</p>
+        </div>
+      </div>
+      <div class="quick-actions">
+        <button type="button" class="btn btn-secondary" id="fillSampleBtn">
+          <i data-lucide="sparkles" class="ic"></i> Fill sample data
+        </button>
+        <button type="button" class="btn btn-secondary" id="refreshListBtn">
+          <i data-lucide="refresh-cw" class="ic"></i> Refresh table
+        </button>
+      </div>
+    </header>
+
+    <!-- Notification -->
+    <div id="alertBox" class="alert" role="status" aria-live="polite"></div>
+
+    <div class="workspace-grid">
+      <!-- Left: Form -->
+      <div class="card">
+        <form id="productForm">
+
+          <div class="section-title">
+            <span class="section-icon"><i data-lucide="tag"></i></span> Basic information
+          </div>
+
+          <div class="form-group">
+            <label for="name">Product name <span class="required">*</span></label>
+            <input type="text" id="name" required placeholder="e.g. Wireless Bluetooth Headphones">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="slug">Slug (URL friendly)</label>
+              <input type="text" id="slug" placeholder="wireless-bluetooth-headphones">
+              <div class="input-hint">Leave blank to auto-generate from name</div>
+            </div>
+            <div class="form-group">
+              <label for="brand">Brand</label>
+              <input type="text" id="brand" placeholder="e.g. SoundMax">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" placeholder="Provide product features, sound quality, specs..."></textarea>
+          </div>
+
+          <div class="section-title">
+            <span class="section-icon"><i data-lucide="wallet"></i></span> Pricing &amp; inventory
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="price">Regular price (BDT) <span class="required">*</span></label>
+              <input type="number" id="price" required min="0" step="any" placeholder="2500">
+            </div>
+            <div class="form-group">
+              <label for="discountPrice">Discount price (BDT)</label>
+              <input type="number" id="discountPrice" min="0" step="any" placeholder="1999">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="category">Category</label>
+              <input type="text" id="category" placeholder="e.g. Electronics, Audio">
+            </div>
+            <div class="form-group">
+              <label for="sku">SKU code</label>
+              <input type="text" id="sku" placeholder="e.g. SM-HEAD-001">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="stock">Stock quantity</label>
+              <input type="number" id="stock" min="0" value="50" placeholder="50">
+            </div>
+            <div class="form-group">
+              <label for="images">Image URLs (comma separated)</label>
+              <input type="text" id="images" placeholder="https://example.com/images/headphones.jpg">
+            </div>
+          </div>
+
+          <div class="section-title">
+            <span class="section-icon"><i data-lucide="sliders-horizontal"></i></span> Specifications
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="color">Color</label>
+              <input type="text" id="color" placeholder="e.g. Black, Silver">
+            </div>
+            <div class="form-group">
+              <label for="connectivity">Connectivity</label>
+              <input type="text" id="connectivity" placeholder="e.g. Bluetooth 5.3, USB-C">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="batteryLife">Battery life</label>
+              <input type="text" id="batteryLife" placeholder="e.g. 30 hours">
+            </div>
+            <div class="form-group">
+              <label for="warranty">Warranty</label>
+              <input type="text" id="warranty" placeholder="e.g. 1 year">
+            </div>
+          </div>
+
+          <div class="section-title">
+            <span class="section-icon"><i data-lucide="star"></i></span> Ratings &amp; status
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="avgRating">Average rating (0 to 5)</label>
+              <input type="number" id="avgRating" min="0" max="5" step="0.1" value="4.5">
+            </div>
+            <div class="form-group">
+              <label for="ratingCount">Total reviews</label>
+              <input type="number" id="ratingCount" min="0" value="120">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Product status</label>
+            <div class="checkbox-group">
+              <label class="toggle-label">
+                <input type="checkbox" id="isActive" checked>
+                <span class="check"><i data-lucide="check"></i></span> Active product
+              </label>
+              <label class="toggle-label">
+                <input type="checkbox" id="isFeatured" checked>
+                <span class="check"><i data-lucide="check"></i></span> Featured in store
+              </label>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="submitBtn">
+              <i data-lucide="save" class="ic"></i> Save product
+            </button>
+            <button type="reset" class="btn btn-secondary" id="resetBtn">
+              <i data-lucide="rotate-ccw" class="ic"></i> Clear form
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Right: Live JSON -->
+      <div class="card preview-card">
+        <div class="preview-header">
+          <div class="section-title">
+            <span class="section-icon"><i data-lucide="file-json"></i></span> Real-time JSON output
+          </div>
+          <span class="sync-hint"><i data-lucide="zap" class="ic-sm"></i> Syncs as you type</span>
+        </div>
+        <p class="preview-note">
+          This JSON object will be saved to <code>data/product.json</code> when you save.
+        </p>
+        <pre class="json-code" id="jsonPreview"></pre>
+      </div>
+    </div>
+
+    <!-- Saved products -->
+    <div class="history-section card">
+      <div class="section-title">
+        <span class="section-icon"><i data-lucide="database"></i></span>
+        Stored products in <code>data/product.json</code>
+        <span class="count-pill" id="totalCountBadge">0</span>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Brand</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Rating</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="productTableBody">
+            <tr><td colspan="8" class="empty-row">Loading products...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // API base URL for localhost:3000, Live Server, and direct file opening
+    const API_BASE = (window.location.protocol === 'file:' || !window.location.origin.includes(':3000'))
+      ? 'http://localhost:3000/api/producat'
+      : '/api/producat';
+
+    // Render Lucide icons (call again after any dynamic HTML)
+    const renderIcons = () => window.lucide && lucide.createIcons();
+
+    // Form elements
+    const form = document.getElementById('productForm');
+    const nameInput = document.getElementById('name');
+    const slugInput = document.getElementById('slug');
+    const descInput = document.getElementById('description');
+    const priceInput = document.getElementById('price');
+    const discountPriceInput = document.getElementById('discountPrice');
+    const categoryInput = document.getElementById('category');
+    const brandInput = document.getElementById('brand');
+    const skuInput = document.getElementById('sku');
+    const stockInput = document.getElementById('stock');
+    const imagesInput = document.getElementById('images');
+    const colorInput = document.getElementById('color');
+    const connectivityInput = document.getElementById('connectivity');
+    const batteryLifeInput = document.getElementById('batteryLife');
+    const warrantyInput = document.getElementById('warranty');
+    const avgRatingInput = document.getElementById('avgRating');
+    const ratingCountInput = document.getElementById('ratingCount');
+    const isActiveInput = document.getElementById('isActive');
+    const isFeaturedInput = document.getElementById('isFeatured');
+
+    const jsonPreview = document.getElementById('jsonPreview');
+    const alertBox = document.getElementById('alertBox');
+    const submitBtn = document.getElementById('submitBtn');
+    const fillSampleBtn = document.getElementById('fillSampleBtn');
+    const refreshListBtn = document.getElementById('refreshListBtn');
+    const productTableBody = document.getElementById('productTableBody');
+    const totalCountBadge = document.getElementById('totalCountBadge');
+
+    let nextEstimatedId = 1;
+    let alertTimer;
+
+    function slugify(text) {
+      return text.toString().toLowerCase().trim()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/\-\-+/g, '-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '');
+    }
+
+    nameInput.addEventListener('input', () => {
+      if (!slugInput.dataset.touched) slugInput.value = slugify(nameInput.value);
+      updatePreview();
+    });
+
+    slugInput.addEventListener('input', () => {
+      slugInput.dataset.touched = 'true';
+      updatePreview();
+    });
+
+    form.addEventListener('input', updatePreview);
+    form.addEventListener('change', updatePreview);
+    form.addEventListener('reset', () => {
+      delete slugInput.dataset.touched;
+      setTimeout(updatePreview, 0);
+    });
+
+    function getFormDataObject() {
+      const imagesArr = imagesInput.value.split(',').map(url => url.trim()).filter(Boolean);
+
+      return {
+        id: nextEstimatedId,
+        name: nameInput.value.trim() || 'Wireless Bluetooth Headphones',
+        slug: slugInput.value.trim() || slugify(nameInput.value || 'wireless-bluetooth-headphones'),
+        description: descInput.value.trim() || 'High-quality wireless headphones with clear sound, deep bass, and long battery life.',
+        price: Number(priceInput.value) || 2500,
+        discountPrice: discountPriceInput.value !== '' ? Number(discountPriceInput.value) : 1999,
+        category: categoryInput.value.trim() || 'Electronics',
+        brand: brandInput.value.trim() || 'SoundMax',
+        sku: skuInput.value.trim() || 'SM-HEAD-001',
+        stock: Number(stockInput.value) || 50,
+        images: imagesArr.length > 0 ? imagesArr : ['https://example.com/images/headphones.jpg'],
+        specifications: {
+          color: colorInput.value.trim() || 'Black',
+          connectivity: connectivityInput.value.trim() || 'Bluetooth 5.3',
+          batteryLife: batteryLifeInput.value.trim() || '30 hours',
+          warranty: warrantyInput.value.trim() || '1 year'
+        },
+        ratings: {
+          average: Number(avgRatingInput.value) || 4.5,
+          count: Number(ratingCountInput.value) || 120
+        },
+        isFeatured: isFeaturedInput.checked,
+        isActive: isActiveInput.checked,
+        createdAt: new Date().toISOString()
+      };
+    }
+
+    function updatePreview() {
+      jsonPreview.textContent = JSON.stringify(getFormDataObject(), null, 2);
+    }
+
+    fillSampleBtn.addEventListener('click', () => {
+      nameInput.value = 'Noise Cancelling Studio Headphones';
+      slugInput.value = 'noise-cancelling-studio-headphones';
+      slugInput.dataset.touched = 'true';
+      descInput.value = 'Flagship active noise cancellation studio monitor headphones with 50mm neodymium drivers.';
+      priceInput.value = 4500;
+      discountPriceInput.value = 3899;
+      categoryInput.value = 'Audio & Electronics';
+      brandInput.value = 'SoundMax Pro';
+      skuInput.value = `SM-PRO-${Math.floor(100 + Math.random() * 900)}`;
+      stockInput.value = 40;
+      imagesInput.value = 'https://example.com/images/studio-headphones.jpg';
+      colorInput.value = 'Midnight Blue';
+      connectivityInput.value = 'Bluetooth 5.4 / 3.5mm Aux';
+      batteryLifeInput.value = '45 hours';
+      warrantyInput.value = '2 years';
+      avgRatingInput.value = 4.8;
+      ratingCountInput.value = 95;
+      isFeaturedInput.checked = true;
+      isActiveInput.checked = true;
+
+      updatePreview();
+      showAlert('Sample data loaded into the form.', 'success');
+    });
+
+    // Alert with Lucide icon
+    function showAlert(msg, type = 'success') {
+      const icon = type === 'success' ? 'circle-check' : 'circle-alert';
+      alertBox.className = `alert alert-${type} show`;
+      alertBox.innerHTML = `<i data-lucide="${icon}" class="ic"></i><span>${escapeHtml(msg)}</span>`;
+      renderIcons();
+      clearTimeout(alertTimer);
+      alertTimer = setTimeout(() => alertBox.classList.remove('show'), 5000);
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Load and render stored products
+    async function loadProducts() {
+      try {
+        const res = await fetch(API_BASE);
+        const json = await res.json();
+        if (json.success && Array.isArray(json.data)) {
+          totalCountBadge.textContent = json.data.length;
+          const maxId = json.data.reduce((max, p) => Math.max(max, Number(p.id) || 0), 0);
+          nextEstimatedId = maxId + 1;
+          updatePreview();
+
+          if (json.data.length === 0) {
+            productTableBody.innerHTML = `<tr><td colspan="8" class="empty-row">No products yet. Fill the form and save your first one.</td></tr>`;
+            return;
+          }
+
+          const items = [...json.data].reverse();
+          productTableBody.innerHTML = items.map(p => {
+            // Show the discount as the selling price, regular price struck through
+            const hasDiscount = p.discountPrice && Number(p.discountPrice) < Number(p.price);
+            const priceHtml = hasDiscount
+              ? `<strong>৳${p.discountPrice}</strong><span class="price-old">৳${p.price}</span>`
+              : `<strong>৳${p.price}</strong>`;
+
+            return `
+            <tr>
+              <td><strong>#${p.id}</strong></td>
+              <td class="cell-name">${escapeHtml(p.name)}</td>
+              <td><span class="tag">${escapeHtml(p.category || '-')}</span></td>
+              <td>${escapeHtml(p.brand || '-')}</td>
+              <td>${priceHtml}</td>
+              <td>${p.stock}</td>
+              <td>
+                <span class="rating">
+                  <i data-lucide="star"></i>
+                  <strong>${p.ratings ? p.ratings.average : '-'}</strong>
+                  <small>(${p.ratings ? p.ratings.count : 0})</small>
+                </span>
+              </td>
+              <td>
+                <div class="status-cell">
+                  ${p.isActive ? '<span class="tag tag-active">Active</span>' : '<span class="tag">Inactive</span>'}
+                  ${p.isFeatured ? '<span class="tag tag-featured">Featured</span>' : ''}
+                </div>
+              </td>
+            </tr>`;
+          }).join('');
+          renderIcons();
+        }
+      } catch (err) {
+        console.error('Failed to load products:', err);
+        productTableBody.innerHTML = `<tr><td colspan="8" class="empty-row error">Couldn't load products. Make sure the Node server is running on port 3000.</td></tr>`;
+      }
+    }
+
+    refreshListBtn.addEventListener('click', loadProducts);
+
+    function setSubmitState(loading) {
+      submitBtn.disabled = loading;
+      submitBtn.innerHTML = loading
+        ? '<i data-lucide="loader-circle" class="ic spin"></i> Saving...'
+        : '<i data-lucide="save" class="ic"></i> Save product';
+      renderIcons();
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (!nameInput.value.trim() || !priceInput.value) {
+        showAlert('Please fill in the product name and price.', 'danger');
+        return;
+      }
+
+      setSubmitState(true);
+      const payload = getFormDataObject();
+
+      try {
+        const response = await fetch(API_BASE, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          showAlert(`Saved "#${result.data.id} - ${result.data.name}" to data/product.json.`, 'success');
+          form.reset();
+          delete slugInput.dataset.touched;
+          await loadProducts();
+        } else {
+          showAlert(result.message || 'Failed to save product.', 'danger');
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        showAlert(`Couldn't reach the server at ${API_BASE}.`, 'danger');
+      } finally {
+        setSubmitState(false);
+      }
+    });
+
+    // Init
+    renderIcons();
+    updatePreview();
+    loadProducts();
+  </script>
+</body>
+</html>

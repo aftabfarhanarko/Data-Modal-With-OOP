@@ -1,0 +1,10 @@
+{
+  "watch": ["."],
+  "ext": "*",
+  "ignore": [
+    "node_modules/**",
+    ".git/**"
+  ],
+  "exec": "node app.js"
+}
+

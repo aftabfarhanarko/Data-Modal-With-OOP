@@ -1,0 +1,618 @@
+[
+  {
+    "id": 1,
+    "name": "Wireless Bluetooth Headphones",
+    "slug": "wireless-bluetooth-headphones",
+    "description": "High-quality wireless headphones with clear sound, deep bass, and long battery life.",
+    "price": 2500,
+    "discountPrice": 1999,
+    "category": "Electronics",
+    "brand": "SoundMax",
+    "sku": "SM-HEAD-001",
+    "stock": 50,
+    "images": [
+      "https://example.com/images/headphones.jpg"
+    ],
+    "specifications": {
+      "color": "Black",
+      "connectivity": "Bluetooth 5.3",
+      "batteryLife": "30 hours",
+      "warranty": "1 year"
+    },
+    "ratings": {
+      "average": 4.5,
+      "count": 120
+    },
+    "isFeatured": true,
+    "isActive": true,
+    "createdAt": "2026-10-29T10:00:00Z"
+  },
+  {
+    "id": 2,
+    "name": "Smart Fitness Watch",
+    "slug": "smart-fitness-watch",
+    "description": "A smart watch with fitness tracking, heart rate monitoring, and notifications.",
+    "price": 4500,
+    "discountPrice": 3799,
+    "category": "Electronics",
+    "brand": "TechPulse",
+    "sku": "TP-WATCH-002",
+    "stock": 35,
+    "images": [
+      "https://example.com/images/smart-watch.jpg"
+    ],
+    "specifications": {
+      "color": "Black",
+      "connectivity": "Bluetooth 5.2",
+      "batteryLife": "7 days",
+      "warranty": "1 year"
+    },
+    "ratings": {
+      "average": 5.6,
+      "count": 85
+    },
+    "isFeatured": true,
+    "isActive": true,
+    "createdAt": "2026-10-29T10:15:00Z"
+  },
+  {
+    "id": 3,
+    "name": "Wireless Gaming Mouse",
+    "slug": "wireless-gaming-mouse",
+    "description": "An ergonomic gaming mouse with adjustable DPI and responsive wireless connectivity.",
+    "price": 1800,
+    "discountPrice": 1499,
+    "category": "Electronics",
+    "brand": "GamePro",
+    "sku": "GP-MOUSE-003",
+    "stock": 60,
+    "images": [
+      "https://example.com/images/gaming-mouse.jpg"
+    ],
+    "specifications": {
+      "color": "Black",
+      "connectivity": "2.4GHz Wireless",
+      "dpi": "7200 DPI",
+      "warranty": "1 year"
+    },
+    "ratings": {
+      "average": 6,
+      "count": 95
+    },
+    "isFeatured": false,
+    "isActive": true,
+    "createdAt": "2026-10-29T10:30:00Z"
+  },
+  {
+    "id": 4,
+    "name": "Mechanical Gaming Keyboard",
+    "slug": "mechanical-gaming-keyboard",
+    "description": "A mechanical keyboard designed for gaming and comfortable everyday typing.",
+    "price": 3500,
+    "discountPrice": 2999,
+    "category": "Electronics",
+    "brand": "KeyMaster",
+    "sku": "KM-KEY-004",
+    "stock": 25,
+    "images": [
+      "https://example.com/images/gaming-keyboard.jpg"
+    ],
+    "specifications": {
+      "color": "Black",
+      "connectivity": "USB-C Wired",
+      "switchType": "Blue Mechanical",
+      "warranty": "1 year"
+    },
+    "ratings": {
+      "average": 4.7,
+      "count": 140
+    },
+    "isFeatured": true,
+    "isActive": true,
+    "createdAt": "2026-10-29T10:45:00Z"
+  },
+  {
+    "id": 5,
+    "name": "Portable Bluetooth Speaker",
+    "slug": "portable-bluetooth-speaker",
+    "description": "A compact portable speaker with powerful sound and water-resistant construction.",
+    "price": 2200,
+    "discountPrice": 1799,
+    "category": "Electronics",
+    "brand": "SoundMax",
+    "sku": "SM-SPKR-005",
+    "stock": 42,
+    "images": [
+      "https://example.com/images/bluetooth-speaker.jpg"
+    ],
+    "specifications": {
+      "color": "Blue",
+      "connectivity": "Bluetooth 5.3",
+      "batteryLife": "12 hours",
+      "warranty": "1 year"
+    },
+    "ratings": {
+      "average": 4.3,
+      "count": 72
+    },
+    "isFeatured": false,
+    "isActive": true,
+    "createdAt": "2026-10-29T11:00:00Z"
+  },
+  {
+    "id": 6,
+    "name": "USB-C Fast Charger",
+    "slug": "usb-c-fast-charger",
+    "description": "A compact fast charger suitable for compatible smartphones, tablets, and accessories.",
+    "price": 1200,
+    "discountPrice": 899,
+    "category": "Accessories",
+    "brand": "ChargePro",
+    "sku": "CP-CHG-006",
+    "stock": 100,
+    "images": [
+      "https://example.com/images/fast-charger.jpg"
+    ],
+    "specifications": {
+      "color": "White",
+      "connectivity": "USB-C",
+      "powerOutput": "30W",
+      "warranty": "6 months"
+    },
+    "ratings": {
+      "average": 4.2,
+      "count": 110
+    },
+    "isFeatured": false,
+    "isActive": true,
+    "createdAt": "2026-10-29T11:15:00Z"
+  },
+  {
+    "id": 7,
+    "name": "Power Bank 20000mAh",
+    "slug": "power-bank-20000mah",
+    "description": "A high-capacity power bank for charging smartphones and other compatible devices.",
+    "price": 2800,
+    "discountPrice": 2299,
+    "category": "Accessories",
+    "brand": "ChargePro",
+    "sku": "CP-PBANK-007",
+    "stock": 40,
+    "images": [
+      "https://example.com/images/power-bank.jpg"
+    ],
+    "specifications": {
+      "color": "Black",
+      "capacity": "20000mAh",
+      "connectivity": "USB-A and USB-C",
+      "warranty": "1 year"
+    },
+    "ratings": {
+      "average": 4.5,
+      "count": 160
+    },
+    "isFeatured": true,
+    "isActive": true,
+    "createdAt": "2026-10-29T11:30:00Z"
+  },
+  {
+    "id": 8,
+    "name": "Laptop Backpack",
+    "slug": "laptop-backpack",
+    "description": "A durable backpack with padded laptop storage and multiple organizational pockets.",
+    "price": 1800,
+    "discountPrice": 1499,
+    "category": "Fashion",
+    "brand": "UrbanCarry",
+    "sku": "UC-BAG-008",
+    "stock": 30,
+    "images": [
+      "https://example.com/images/laptop-backpack.jpg"
+    ],
+    "specifications": {
+      "color": "Navy Blue",
+      "material": "Water-resistant Polyester",
+      "capacity": "25 Liters",
+      "warranty": "6 months"
+    },
+    "ratings": {
+      "average": 54,
+      "count": 65
+    },
+    "isFeatured": false,
+    "isActive": true,
+    "createdAt": "2026-10-29T11:45:00Z"
+  },
+  {
+    "id": 9,
+    "name": "Men's Casual Sneakers",
+    "slug": "mens-casual-sneakers",
+    "description": "Comfortable casual sneakers suitable for daily wear and outdoor activities.",
+    "price": 3200,
+    "discountPrice": 2699,
+    "category": "Footwear",
+    "brand": "StepStyle",
+    "sku": "SS-SHOE-009",
+    "stock": 28,
+    "images": [
+      "https://example.com/images/casual-sneakers.jpg"
+    ],
+    "specifications": {
+      "color": "Red",
+      "material": "Synthetic Leather",
+      "sizes": "40-45",
+      "warranty": "No warranty"
+    },
+    "ratings": {
+      "average": 4.1,
+      "count": 48
+    },
+    "isFeatured": false,
+    "isActive": true,
+    "createdAt": "2026-10-29T12:00:00Z"
+  },
+  {
+    "id": 10,
+    "name": "Cotton Casual T-Shirt",
+    "slug": "cotton-casual-t-shirt",
+    "description": "A soft cotton T-shirt designed for everyday comfort and casual styling.",
+    "price": 800,
+    "discountPrice": 599,
+    "category": "Fashion",
+    "brand": "StyleWear",
+    "sku": "SW-TSHIRT-010",
+    "stock": 75,
+    "images": [
+      "https://example.com/images/cotton-tshirt.jpg"
+    ],
+    "specifications": {
+      "color": "Black",
+      "material": "100% Cotton",
+      "sizes": "S, M, L, XL",
+      "warranty": "No warranty"
+    },
+    "ratings": {
+      "average": 4.3,
+      "count": 92
+    },
+    "isFeatured": false,
+    "isActive": true,
+    "createdAt": "2026-10-29T12:15:00Z"
+  },
+  {
+    "id": 11,
+    "name": "Stainless Steel Water Bottle",
+    "slug": "stainless-steel-water-bottle",
+    "description": "A reusable insulated water bottle that helps keep drinks at the desired temperature.",
+    "price": 1000,
+    "discountPrice": 799,
+    "category": "Home & Kitchen",
+    "brand": "HydroLife",
+    "sku": "HL-BOTTLE-011",
+    "stock": 90,
+    "images": [
+      "https://example.com/images/water-bottle.jpg"
+    ],
+    "specifications": {
+      "color": "Silver",
+      "material": "Stainless Steel",
+      "capacity": "750ml",
+      "warranty": "6 months"
+    },
+    "ratings": {
+      "average": 4.6,
+      "count": 130
+    },
+    "isFeatured": true,
+    "isActive": true,
+    "createdAt": "2026-10-29T12:30:00Z"
+  },
+  {
+    "id": 12,
+    "name": "Digital Kitchen Scale",
+    "slug": "digital-kitchen-scale",
+    "description": "A digital kitchen scale for accurately measuring ingredients while cooking or baking.",
+    "price": 1400,
+    "discountPrice": 1099,
+    "category": "Home & Kitchen",
+    "brand": "CookSmart",
+    "sku": "CS-SCALE-012",
+    "stock": 22,
+    "images": [
+      "https://example.com/images/kitchen-scale.jpg"
+    ],
+    "specifications": {
+      "color": "White",
+      "material": "ABS Plastic and Stainless Steel",
+      "capacity": "10kg",
+      "warranty": "1 year"
+    },
+    "ratings": {
+      "average": 4.2,
+      "count": 54
+    },
+    "isFeatured": false,
+    "isActive": true,
+    "createdAt": "2026-10-29T12:45:00Z"
+  },
+  {
+    "id": 13,
+    "name": "LED Desk Lamp",
+    "slug": "led-desk-lamp",
+    "description": "An energy-efficient LED desk lamp with adjustable brightness for reading and working.",
+    "price": 1600,
+    "discountPrice": 1299,
+    "category": "Home & Kitchen",
+    "brand": "BrightHome",
+    "sku": "BH-LAMP-013",
+    "stock": 33,
+    "images": [
+      "https://example.com/images/desk-lamp.jpg"
+    ],
+    "specifications": {
+      "color": "White",
+      "power": "10W LED",
+      "brightness": "3 Levels",
+      "warranty": "1 year"
+    },
+    "ratings": {
+      "average": 4.5,
+      "count": 78
+    },
+    "isFeatured": false,
+    "isActive": true,
+    "createdAt": "2026-10-29T13:00:00Z"
+  },
+  {
+    "id": 14,
+    "name": "Smartphone Tripod Stand",
+    "slug": "smartphone-tripod-stand",
+    "description": "An adjustable tripod stand for smartphone photography, video recording, and live streaming.",
+    "price": 1300,
+    "discountPrice": 999,
+    "category": "Photography",
+    "brand": "CreatorGear",
+    "sku": "CG-TRIPOD-014",
+    "stock": 45,
+    "images": [
+      "https://example.com/images/tripod-stand.jpg"
+    ],
+    "specifications": {
+      "color": "Black",
+      "material": "Aluminum Alloy",
+      "height": "Up to 160cm",
+      "warranty": "6 months"
+    },
+    "ratings": {
+      "average": 4.4,
+      "count": 67
+    },
+    "isFeatured": false,
+    "isActive": true,
+    "createdAt": "2026-10-29T13:15:00Z"
+  },
+  {
+    "id": 15,
+    "name": "1080p Webcam",
+    "slug": "1080p-webcam",
+    "description": "A full HD webcam for online meetings, remote work, and video calls.",
+    "price": 2600,
+    "discountPrice": 2199,
+    "category": "Electronics",
+    "brand": "VisionTech",
+    "sku": "VT-CAM-015",
+    "stock": 18,
+    "images": [
+      "https://example.com/images/webcam.jpg"
+    ],
+    "specifications": {
+      "color": "Black",
+      "resolution": "1080p Full HD",
+      "connectivity": "USB 2.0",
+      "warranty": "1 year"
+    },
+    "ratings": {
+      "average": 4.3,
+      "count": 83
+    },
+    "isFeatured": true,
+    "isActive": true,
+    "createdAt": "2026-10-29T13:30:00Z"
+  },
+  {
+    "id": 16,
+    "name": "External SSD 1TB",
+    "slug": "external-ssd-1tb",
+    "description": "A portable solid-state drive offering fast file transfers and convenient storage.",
+    "price": 9500,
+    "discountPrice": 8499,
+    "category": "Computer Accessories",
+    "brand": "DataDrive",
+    "sku": "DD-SSD-016",
+    "stock": 15,
+    "images": [
+      "https://example.com/images/external-ssd.jpg"
+    ],
+    "specifications": {
+      "color": "Silver",
+      "capacity": "1TB",
+      "connectivity": "USB-C",
+      "warranty": "3 years"
+    },
+    "ratings": {
+      "average": 4.8,
+      "count": 105
+    },
+    "isFeatured": true,
+    "isActive": true,
+    "createdAt": "2026-10-29T13:45:00Z"
+  },
+  {
+    "id": 17,
+    "name": "Wireless Earbuds",
+    "slug": "wireless-earbuds",
+    "description": "Compact wireless earbuds with clear audio, a portable charging case, and touch controls.",
+    "price": 3000,
+    "discountPrice": 2499,
+    "category": "Electronics",
+    "brand": "SoundMax",
+    "sku": "SM-EARBUD-017",
+    "stock": 38,
+    "images": [
+      "https://example.com/images/wireless-earbuds.jpg"
+    ],
+    "specifications": {
+      "color": "White",
+      "connectivity": "Bluetooth 5.3",
+      "batteryLife": "24 hours with case",
+      "warranty": "1 year"
+    },
+    "ratings": {
+      "average": 4.5,
+      "count": 150
+    },
+    "isFeatured": true,
+    "isActive": true,
+    "createdAt": "2026-10-29T14:00:00Z"
+  },
+  {
+    "id": 18,
+    "name": "Electric Coffee Grinder",
+    "slug": "electric-coffee-grinder",
+    "description": "A compact electric grinder for preparing freshly ground coffee at home.",
+    "price": 2400,
+    "discountPrice": 1999,
+    "category": "Home & Kitchen",
+    "brand": "BrewMaster",
+    "sku": "BM-GRIND-018",
+    "stock": 20,
+    "images": [
+      "https://example.com/images/coffee-grinder.jpg"
+    ],
+    "specifications": {
+      "color": "Black",
+      "power": "150W",
+      "capacity": "80g",
+      "warranty": "1 year"
+    },
+    "ratings": {
+      "average": 4.1,
+      "count": 41
+    },
+    "isFeatured": false,
+    "isActive": true,
+    "createdAt": "2026-10-29T14:15:00Z"
+  },
+  {
+    "id": 19,
+    "name": "USB-C Hub Adapter",
+    "slug": "usb-c-hub-adapter",
+    "description": "A multiport USB-C hub that expands connectivity for compatible laptops and tablets.",
+    "price": 2200,
+    "discountPrice": 1799,
+    "category": "Computer Accessories",
+    "brand": "ConnectPro",
+    "sku": "CP-HUB-019",
+    "stock": 32,
+    "images": [
+      "https://example.com/images/usb-c-hub.jpg"
+    ],
+    "specifications": {
+      "color": "Gray",
+      "ports": "USB-A, USB-C, HDMI, SD Card",
+      "connectivity": "USB-C",
+      "warranty": "1 year"
+    },
+    "ratings": {
+      "average": 4.4,
+      "count": 89
+    },
+    "isFeatured": false,
+    "isActive": true,
+    "createdAt": "2026-10-29T14:30:00Z"
+  },
+  {
+    "id": 20,
+    "name": "Mini Air Humidifier",
+    "slug": "mini-air-humidifier",
+    "description": "A compact air humidifier designed for desks, bedrooms, and small personal spaces.",
+    "price": 1700,
+    "discountPrice": 1399,
+    "category": "Home & Kitchen",
+    "brand": "AirComfort",
+    "sku": "AC-HUMID-020",
+    "stock": 26,
+    "images": [
+      "https://example.com/images/mini-humidifier.jpg"
+    ],
+    "specifications": {
+      "color": "White",
+      "capacity": "300ml",
+      "power": "USB Powered",
+      "warranty": "6 months"
+    },
+    "ratings": {
+      "average": 4.2,
+      "count": 58
+    },
+    "isFeatured": false,
+    "isActive": true,
+    "createdAt": "2026-10-29T14:45:00Z"
+  },
+  {
+    "id": 21,
+    "name": "Xantha Valdez",
+    "slug": "voluptate-officia-ex",
+    "description": "Et facere eos ut nos",
+    "price": 952,
+    "discountPrice": 756,
+    "category": "Eius enim eum adipis",
+    "brand": "Minim occaecat rerum",
+    "sku": "Nam sed nostrud ipsu",
+    "stock": 973,
+    "images": [
+      "Et earum aliquid ali"
+    ],
+    "specifications": {
+      "color": "Dolor laborum iure b",
+      "connectivity": "Fugiat qui eum deser",
+      "batteryLife": "Qui eiusmod magna el",
+      "warranty": "Minima sit est sunt"
+    },
+    "ratings": {
+      "average": 1.5,
+      "count": 14
+    },
+    "isFeatured": false,
+    "isActive": true,
+    "createdAt": "2026-10-29T16:09:15.733Z"
+  },
+  {
+    "id": 22,
+    "name": "Rhona Pruitt",
+    "slug": "delectus-ducimus-q",
+    "description": "Do quasi asperiores",
+    "price": 739,
+    "discountPrice": 595,
+    "category": "Voluptate ex ut dolo",
+    "brand": "Do autem ea ea quia",
+    "sku": "Voluptatibus officii",
+    "stock": 14,
+    "images": [
+      "Duis ut doloremque o"
+    ],
+    "specifications": {
+      "color": "Possimus tempor at",
+      "connectivity": "Rerum ipsum ratione",
+      "batteryLife": "Nisi rerum non accus",
+      "warranty": "Officiis est soluta"
+    },
+    "ratings": {
+      "average": 4.2,
+      "count": 98
+    },
+    "isFeatured": true,
+    "isActive": false,
+    "createdAt": "2026-10-29T16:09:34.350Z"
+  }
+]
