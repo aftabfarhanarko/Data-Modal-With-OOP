@@ -1,4 +1,4 @@
-# Data Modeling with OOP & Backend Architecture (C++, Go, JavaScript)
+<!-- # Data Modeling with OOP & Backend Architecture (C++, Go, JavaScript)
 
 This repository demonstrates **Data Modeling** and **Object-Oriented Programming (OOP)** patterns across multiple programming languages (**C++**, **Go**, and **JavaScript / Node.js & Express**).
 
@@ -47,7 +47,7 @@ The C++ files cover core OOP principles, custom data modeling, and memory abstra
     - `Employee`: Demonstrates state modification via member functions (`increaseSalary()`).
     - `Product`: E-commerce data modeling with computed methods (`calculateTotal() = price * quantity`).
     - `Book`: Library/reading entity modeling.
-  - **Collections & Loops**:
+  <!-- - **Collections & Loops**: -->
     - Array of objects (`Student students[3]`).
     - Looping through object arrays to execute polymorphic-like member methods.
 
@@ -130,4 +130,4 @@ cd JS
 npm install
 npm run dev   # or: node app.js
 ```
-Open **`http://localhost:3000`** in your browser to view the Product Form UI.
+Open **`http://localhost:3000`** in your browser to view the Product Form UI. -->
